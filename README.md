@@ -328,6 +328,4 @@ Terima kasih kepada para pengembang dan komunitas teknologi yang telah menyediak
 
 ---
 
-<p align="center">
-  <i>Dibuat dengan ❤️ untuk portofolio dan pembelajaran.</i>
-</p>
+
