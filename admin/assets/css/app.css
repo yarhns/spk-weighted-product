@@ -1,0 +1,597 @@
+/* ============================================
+   SPK WP — Custom Theme
+   Bootstrap 5 + Modern Admin (Flex Layout)
+   ============================================ */
+
+:root {
+    --brand-50:  #eef2ff;
+    --brand-100: #e0e7ff;
+    --brand-500: #6366f1;
+    --brand-600: #4f46e5;
+    --brand-700: #4338ca;
+
+    --slate-50:  #f8fafc;
+    --slate-100: #f1f5f9;
+    --slate-200: #e2e8f0;
+    --slate-300: #cbd5e1;
+    --slate-400: #94a3b8;
+    --slate-500: #64748b;
+    --slate-600: #475569;
+    --slate-700: #334155;
+    --slate-800: #1e293b;
+    --slate-900: #0f172a;
+
+    --sidebar-w: 260px;
+    --topbar-h: 64px;
+
+    --radius: 12px;
+    --shadow-sm: 0 1px 2px rgba(15, 23, 42, .06);
+    --shadow:    0 4px 12px rgba(15, 23, 42, .08);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--slate-50);
+    color: var(--slate-800);
+    font-size: 14.5px;
+    -webkit-font-smoothing: antialiased;
+    margin: 0;
+    padding: 0;
+}
+
+/* ============================================
+   LAYOUT — FLEX (sidebar & main berdampingan)
+   ============================================ */
+
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+/* ----- Sidebar ----- */
+.app-sidebar {
+    width: var(--sidebar-w);
+    flex-shrink: 0;
+    background: var(--slate-900);
+    color: var(--slate-300);
+    padding: 20px 14px;
+    overflow-y: auto;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    z-index: 1000;
+    transition: transform .25s ease;
+}
+
+.app-sidebar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 10px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.07);
+    margin-bottom: 14px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    letter-spacing: -.01em;
+}
+.app-sidebar .brand .logo {
+    width: 34px; height: 34px;
+    display: grid; place-items: center;
+    background: linear-gradient(135deg, var(--brand-500), var(--brand-700));
+    border-radius: 10px;
+    font-size: 1rem;
+    color: #fff;
+}
+
+.app-sidebar .nav-section {
+    font-size: .7rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--slate-500);
+    padding: 14px 12px 6px;
+    font-weight: 600;
+}
+
+.app-sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    color: var(--slate-300);
+    text-decoration: none;
+    font-weight: 500;
+    margin-bottom: 2px;
+    transition: background .15s, color .15s;
+}
+.app-sidebar .nav-link:hover {
+    background: rgba(255,255,255,.05);
+    color: #fff;
+}
+.app-sidebar .nav-link.active {
+    background: var(--brand-600);
+    color: #fff;
+    box-shadow: 0 6px 16px -6px rgba(79,70,229,.6);
+}
+.app-sidebar .nav-link i {
+    font-size: 1.05rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* ----- Main area (topbar + content) ----- */
+.app-main {
+    flex: 1;
+    min-width: 0;              /* cegah tabel lebar mendorong layout */
+    display: flex;
+    flex-direction: column;
+}
+
+.app-topbar {
+    background: #fff;
+    border-bottom: 1px solid var(--slate-200);
+    height: var(--topbar-h);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 28px;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+}
+.app-topbar .page-title {
+    font-weight: 600;
+    color: var(--slate-800);
+    margin: 0;
+    font-size: 1rem;
+}
+.app-topbar .user-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .875rem;
+    color: var(--slate-600);
+}
+.app-topbar .avatar {
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    background: var(--brand-100);
+    color: var(--brand-700);
+    display: grid; place-items: center;
+    font-weight: 600;
+}
+
+.app-content {
+    padding: 28px;
+    flex: 1;
+    min-width: 0;
+    overflow-x: auto;          /* tabel lebar scroll di dalam, bukan menembus sidebar */
+}
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+.page-header { margin-bottom: 24px; }
+.page-header h1 {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    letter-spacing: -.02em;
+    margin: 0 0 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.page-header p {
+    color: var(--slate-500);
+    margin: 0;
+}
+
+.breadcrumb-modern {
+    display: flex;
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 8px;
+    font-size: .85rem;
+    color: var(--slate-500);
+}
+.breadcrumb-modern a {
+    color: var(--brand-600);
+    text-decoration: none;
+}
+.breadcrumb-modern a:hover { text-decoration: underline; }
+
+/* ============================================
+   CARD
+   ============================================ */
+.card-modern {
+    background: #fff;
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.card-modern .card-head {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--slate-100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.card-modern .card-head h5 {
+    margin: 0;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--slate-800);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.card-modern .card-body { padding: 20px; }
+
+/* ============================================
+   TABLE
+   ============================================ */
+.table-modern {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .875rem;
+    margin: 0;
+}
+.table-modern thead th {
+    background: var(--slate-50);
+    color: var(--slate-600);
+    font-weight: 600;
+    text-align: left;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--slate-200);
+    font-size: .8rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    white-space: nowrap;
+}
+.table-modern tbody td,
+.table-modern tbody th {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--slate-100);
+    color: var(--slate-700);
+    font-weight: 400;
+    vertical-align: middle;
+}
+.table-modern tbody tr:hover { background: var(--slate-50); }
+.table-modern tbody tr:last-child td,
+.table-modern tbody tr:last-child th { border-bottom: none; }
+.table-modern tfoot td {
+    padding: 12px 14px;
+    background: var(--slate-50);
+    border-top: 2px solid var(--slate-200);
+    font-weight: 600;
+    color: var(--slate-800);
+}
+.table-modern .text-center { text-align: center; }
+.table-modern .text-end    { text-align: right; }
+
+/* ============================================
+   BADGE
+   ============================================ */
+.badge-soft {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: .75rem;
+    font-weight: 600;
+}
+.badge-soft.cost     { background: #fee2e2; color: #b91c1c; }
+.badge-soft.benefit  { background: #dcfce7; color: #15803d; }
+.badge-soft.brand    { background: var(--brand-50); color: var(--brand-700); }
+
+/* ============================================
+   BUTTON
+   ============================================ */
+.btn-brand {
+    background: var(--brand-600);
+    color: #fff;
+    border: none;
+    padding: 9px 16px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: .875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: background .15s, transform .05s;
+    text-decoration: none;
+    cursor: pointer;
+}
+.btn-brand:hover  { background: var(--brand-700); color: #fff; }
+.btn-brand:active { transform: translateY(1px); }
+
+.btn-soft {
+    background: var(--slate-100);
+    color: var(--slate-700);
+    border: 1px solid var(--slate-200);
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: .875rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: background .15s;
+    cursor: pointer;
+}
+.btn-soft:hover { background: var(--slate-200); color: var(--slate-800); }
+
+/* ============================================
+   CALLOUT / ALERT
+   ============================================ */
+.callout-modern {
+    padding: 14px 18px;
+    border-radius: 10px;
+    border-left: 4px solid var(--brand-500);
+    background: var(--brand-50);
+    color: var(--brand-700);
+    margin-bottom: 16px;
+    font-size: .9rem;
+}
+.callout-modern.success {
+    border-color: #22c55e;
+    background: #f0fdf4;
+    color: #166534;
+}
+.callout-modern.warning {
+    border-color: #f59e0b;
+    background: #fffbeb;
+    color: #92400e;
+}
+.callout-modern.danger {
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #991b1b;
+}
+
+/* ============================================
+   STAT CARDS (untuk dashboard nanti)
+   ============================================ */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+}
+.stat-card {
+    background: #fff;
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+}
+.stat-card .label {
+    font-size: .8rem;
+    color: var(--slate-500);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+.stat-card .value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    letter-spacing: -.02em;
+}
+.stat-card .icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    display: grid; place-items: center;
+    background: var(--brand-50);
+    color: var(--brand-600);
+    font-size: 1.2rem;
+    position: absolute;
+    top: 18px; right: 20px;
+}
+
+/* ============================================
+   RANKING HIGHLIGHT
+   ============================================ */
+.rank-1 {
+    background: linear-gradient(90deg, #ecfdf5, #f0fdf4) !important;
+}
+.rank-1 td {
+    color: #065f46 !important;
+    font-weight: 600;
+}
+.rank-badge {
+    display: inline-grid; place-items: center;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--slate-100);
+    color: var(--slate-700);
+    font-weight: 700;
+    font-size: .8rem;
+}
+.rank-badge.gold {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #fff;
+    box-shadow: 0 4px 10px -2px rgba(245,158,11,.5);
+}
+
+/* ============================================
+   DASHBOARD HERO & ENHANCEMENTS
+   ============================================ */
+
+/* Hero Banner Dashboard */
+.hero-dashboard {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(79, 70, 229, 0.7)), 
+                url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;
+    border-radius: var(--radius);
+    padding: 40px;
+    color: #fff;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+.hero-dashboard h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -.02em;
+    margin: 0 0 8px;
+    color: #fff;
+}
+.hero-dashboard p {
+    color: rgba(255,255,255,.85);
+    margin: 0 0 20px;
+    font-size: 1rem;
+    max-width: 600px;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,.15);
+    backdrop-filter: blur(8px);
+    padding: 6px 12px;
+    border-radius: 99px;
+    font-size: .8rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    border: 1px solid rgba(255,255,255,.2);
+}
+
+/* Stat Cards Enhancement */
+.stat-card {
+    transition: transform .2s ease, box-shadow .2s ease;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: var(--brand-600);
+    border-radius: var(--radius) var(--radius) 0 0;
+}
+.stat-card .icon {
+    background: linear-gradient(135deg, var(--brand-100), #fff);
+}
+
+/* Chart Container Enhancement */
+.chart-card {
+    background: #fff;
+    border: 1px solid var(--slate-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+.chart-card .card-head {
+    background: linear-gradient(to right, #f8fafc, #fff);
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--slate-100);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.chart-card .card-head h5 {
+    margin: 0;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--slate-800);
+}
+
+/* ============================================
+   DATA MASTER PAGE ENHANCEMENTS
+   ============================================ */
+
+/* Header Ilustratif (ikon besar transparan di pojok card) */
+.card-modern {
+    position: relative;
+    overflow: hidden;
+}
+.card-modern .bg-icon {
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    font-size: 8rem;
+    color: var(--brand-50);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-15deg);
+}
+.card-modern .card-head,
+.card-modern .card-body {
+    position: relative;
+    z-index: 1;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+}
+.empty-state img {
+    width: 200px;
+    max-width: 100%;
+    margin-bottom: 20px;
+    opacity: 0.9;
+}
+.empty-state h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--slate-800);
+    margin-bottom: 8px;
+}
+.empty-state p {
+    color: var(--slate-500);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 992px) {
+    .app-sidebar {
+        position: fixed;
+        top: 0; left: 0; bottom: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 1100;
+    }
+    .app-sidebar.show { transform: translateX(0); }
+
+    .app-content {
+        padding: 20px 16px;
+    }
+    .app-topbar {
+        padding: 0 16px;
+    }
+    .page-header h1 {
+        font-size: 1.35rem;
+    }
+}
+
+/* ============================================
+   UTILITY TAMBAHAN
+   ============================================ */
+.text-end { text-align: right !important; }
+.text-center { text-align: center !important; }
+.mb-0 { margin-bottom: 0 !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mt-3 { margin-top: 1rem !important; }

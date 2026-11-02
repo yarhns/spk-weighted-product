@@ -1,0 +1,28 @@
+# === Rahasia (JANGAN di-commit) ===
+.env
+.env.local
+
+# === Dependencies (bisa di-install ulang) ===
+/vendor/
+node_modules/
+composer.phar
+
+# === File sistem ===
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# === IDE ===
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# === Log & cache ===
+*.log
+/storage/cache/
+
+# === File sementara ===
+*.bak
+*.tmp
+*.swp   
